@@ -20,7 +20,7 @@ public class ApplicationUser implements UserDetails {
    private String password;
     private String firstName;
     private String lastName;
-    private Date data;
+    private Date date;
     private String bio;
     private LocalDate localDate;
 
@@ -28,12 +28,12 @@ public class ApplicationUser implements UserDetails {
     public ApplicationUser() {
     }
 
-    public ApplicationUser(String username, String password, String firstName, String lastName, Date data, String bio, LocalDate localDate) {
+    public ApplicationUser(String username, String password, String firstName, String lastName, Date date, String bio, LocalDate localDate) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.data = data;
+        this.date = date;
         this.bio = bio;
         this.localDate = localDate;
     }
@@ -87,6 +87,14 @@ public class ApplicationUser implements UserDetails {
         return firstName;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -99,13 +107,7 @@ public class ApplicationUser implements UserDetails {
         this.lastName = lastName;
     }
 
-    public Date getData() {
-        return data;
-    }
 
-    public void setData(Date data) {
-        this.data = data;
-    }
 
     public String getBio() {
         return bio;

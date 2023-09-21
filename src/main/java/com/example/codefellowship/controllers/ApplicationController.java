@@ -35,7 +35,7 @@ public class ApplicationController {
     private UserDetailsService userDetailsService;
 
     @PostMapping("/signup")
-    public RedirectView createUser(String username, String password , String firstName , String lastName  , Date data , String bio ){
+    public RedirectView createUser(String username, String password , String firstName , String lastName  , Date date , String bio ){
         ApplicationUser applicationUser = new ApplicationUser();
         applicationUser.setUsername(username);
         applicationUser.setLocalDate(LocalDate.now());
@@ -43,7 +43,7 @@ public class ApplicationController {
         applicationUser.setPassword(encryptedPassword);
         applicationUser.setFirstName(firstName);
         applicationUser.setLastName(lastName);
-        applicationUser.setData(data);
+        applicationUser.setDate(date);
         applicationUser.setBio(bio);
 //        applicationUser.setLocalDate(LocalDate.now());
 
@@ -79,18 +79,14 @@ public class ApplicationController {
     public String getHomePage(Principal p, Model m){
 
         if(p != null){
+            System.out.println("here");
             String username = p.getName();
             ApplicationUser applicationUser= RepoForApp.findByUsername(username);
 
             m.addAttribute("username", username);
-//            m.addAttribute("createdDate", RepoForApp.getLocalDate());
+        //   m.addAttribute("createdDate", RepoForApp.getLocalDate());
 
         }
 
         return "index.html";
-    }
-
-
-
-
-}
+    }}

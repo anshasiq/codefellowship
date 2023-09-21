@@ -7,4 +7,6 @@ public interface ApplicationUserRepo extends JpaRepository<ApplicationUser,Long>
 
 
     ApplicationUser findByUsername(String username);
+
+  //  Object getLocalDate();
 }
