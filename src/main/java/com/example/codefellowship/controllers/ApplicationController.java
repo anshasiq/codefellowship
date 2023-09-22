@@ -49,7 +49,7 @@ public class ApplicationController {
 
         RepoForApp.save(applicationUser);
         authWithHttpServletRequest(username, password  );
-        return new RedirectView("/");
+        return new RedirectView("/myprofile");
 
     }
     public void authWithHttpServletRequest(String username, String password){
@@ -75,6 +75,9 @@ public class ApplicationController {
     public String getSignupPage(){
         return "signup.html";
     }
+
+
+
     @GetMapping("/")
     public String getHomePage(Principal p, Model m){
 
@@ -84,7 +87,12 @@ public class ApplicationController {
             ApplicationUser applicationUser= RepoForApp.findByUsername(username);
 
             m.addAttribute("username", username);
-        //   m.addAttribute("createdDate", RepoForApp.getLocalDate());
+
+            m.addAttribute("username", username);
+            m.addAttribute("firstName", applicationUser.getFirstName());
+            m.addAttribute("lastName", applicationUser.getLastName());
+            m.addAttribute("dateOfBirth", applicationUser.getDate());
+            m.addAttribute("bio", applicationUser.getBio());
 
         }
 

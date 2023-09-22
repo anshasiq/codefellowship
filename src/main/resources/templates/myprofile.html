@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+<!--    <link  th:href="@{/css/home.css}"  type="text/css" rel="stylesheet" >-->
+
+</head>
+<body>
+
+<h3 th:if="${username != null}" th:text="${'Current user: ' + username + ' and created at ' + createdDate}"></h3>
+<h1>Welcome to the home page</h1>
+
+<div class="userinfo">
+    <h2 th:if="${username != null}">Your Profile info</h2>
+    <p th:if="${username != null}" th:text="${'Username: ' + username}"></p>
+    <p th:if="${firstName != null}" th:text="${'First Name: ' + firstName}"></p>
+    <p th:if="${lastName != null}" th:text="${'Last Name: ' + lastName}"></p>
+<!--    <p th:if="${dateOfBirth != null}" th:text="${'Date Of Birth: ' + dateOfBirth}"></p>-->
+    <p th:if="${bio != null}" th:text="${'Bio: ' + bio}"></p>
+    <img th:src="${picture}" alt="Default Profile Picture" width="300" height="300">
+
+</div>
+
+<fieldset>
+    <form action="/addpost" method="POST">
+        <label for="body"> add a post </label>
+        <input type="text" name="body" id="body">
+        <input type="submit" value="add">
+    </form>
+</fieldset>
+     <h5 th:each = "posts : ${myposts}"  th:text="${post.body}" th:text="${post.createdAt}" > </h5>
+
+
+
+    <li> <a th:if="${username}" href="/logout">Log Out</a> </li>
+
+</body>
+</html>
