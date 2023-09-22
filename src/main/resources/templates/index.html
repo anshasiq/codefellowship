@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Home page</title>
+    <link  th:href="@{/css/home.css}"  type="text/css" rel="stylesheet" >
+
 </head>
 <body>
 
 <h3 th:if="${username != null}" th:text="${'Current user: ' + username + ' and created at ' + createdDate}"></h3>
 <h1>Welcome to the home page</h1>
 
-<a th:if="!${username}" href="/login">Log In</a>
+
 <br>
-<a th:if="!${username}" href="/signup">Or Sign Up</a>
-<a th:if="${username}" href="/logout">Log Out</a>
+<ul class="menu">
+<li><a th:if="!${username}" href="/login">Log In</a></li>
+<li> <a th:if="!${username}" href="/signup">Or Sign Up</a> </li>
+<li> <a th:if="${username}" href="/logout">Log Out</a> </li>
+</ul>
 </body>
 </html>
