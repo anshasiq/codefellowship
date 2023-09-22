@@ -1,0 +1,22 @@
+/* Style for the menu */
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  display: inline-block;
+  margin-right: 20px; /* Adjust as needed */
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333; /* Change the text color as needed */
+  font-weight: bold;
+}
+
+/* Style for the links on hover */
+.menu a:hover {
+  color: #FF5733; /* Change the hover color as needed */
+}
