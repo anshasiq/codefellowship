@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User By Id</title>
+</head>
+<body>
+<h2 th:if="${username != null}">Profile info</h2>
+<img th:src="${picture}" alt="Default Profile Picture" width="200" height="200">
+<p th:if="${username != null}" th:text="${'Username: ' + username}"></p>
+<p th:if="${firstName != null}" th:text="${'First Name: ' + firstName}"></p>
+<p th:if="${lastName != null}" th:text="${'Last Name: ' + lastName}"></p>
+<h5 th:each = "posts : ${myposts}"  th:text="${posts.body}" th:text="${posts.createdAt}" > </h5>
+<p th:if="${bio != null}" th:text="${'Bio: ' + bio}"></p>
+</body>
+</html>

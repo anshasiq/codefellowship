@@ -23,9 +23,12 @@ public class ApplicationUser implements UserDetails {
     private LocalDate localDate;
 
 
-    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
-    private List<Post> posts;
+    @OneToMany(mappedBy = "userid", cascade = CascadeType.ALL)
+    private List <Post> posts;
 
+    public List<Post> getPosts() {
+        return posts;
+    }
 
     public ApplicationUser() {
     }
