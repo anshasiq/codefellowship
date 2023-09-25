@@ -24,7 +24,7 @@ public class ApplicationUser implements UserDetails {
 
 
     @OneToMany(mappedBy = "userid", cascade = CascadeType.ALL)
-    private List<Post> posts;
+    private List <Post> posts;
 
     public List<Post> getPosts() {
         return posts;

@@ -51,7 +51,7 @@ public class PostController {
             m.addAttribute("lastName", applicationUser.getLastName());
 //            m.addAttribute("dateOfBirth", applicationUser.getDate());
             m.addAttribute("bio", applicationUser.getBio());
-//            List<Post> posts = postRepo.findByUserId (applicationUser);
+//            List<Post> posts = postRepo.findByUserid (applicationUser);
 //            m.addAttribute("myposts", posts);
             m.addAttribute("picture","https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png");
 
@@ -80,7 +80,7 @@ public class PostController {
             m.addAttribute("lastName", applicationUser.getLastName());
 //            m.addAttribute("dateOfBirth", applicationUser.getDate());
             m.addAttribute("bio", applicationUser.getBio());
-//            List<Post> posts = postRepo.findByUserId (applicationUser);
+//            List<Post> posts = postRepo.findByUserid (applicationUser);
 //            m.addAttribute("myposts", posts);
             m.addAttribute("picture","https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png");
 
@@ -95,7 +95,7 @@ public class PostController {
         m.addAttribute("lastName", applicationUser.getLastName());
 //        m.addAttribute("dateOfBirth", applicationUser.getDate());
         m.addAttribute("bio", applicationUser.getBio());
-        List<Post> posts = postRepo.findByUserId (applicationUser);
+        List<Post> posts = postRepo.findByUserid (applicationUser);
         m.addAttribute("myposts", posts);
         m.addAttribute("defaultProfilePicture", "https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png");
 

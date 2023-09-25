@@ -27,12 +27,12 @@ public class ApplicationController {
     PasswordEncoder passwordEncoder;
     @Autowired
     private HttpServletRequest request;
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private UserDetailsService userDetailsService;
+//
+//    @Autowired
+//    private AuthenticationManager authenticationManager;
+//
+//    @Autowired
+//    private UserDetailsService userDetailsService;
 
     @PostMapping("/signup")
     public RedirectView createUser(String username, String password , String firstName , String lastName  , Date date , String bio ){
