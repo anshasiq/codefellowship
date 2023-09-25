@@ -6,6 +6,7 @@ import com.example.codefellowship.model.ApplicationUser;
 import com.example.codefellowship.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +18,7 @@ import java.security.Principal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Controller
 public class PostController {
 
     @Autowired
@@ -45,14 +46,12 @@ public class PostController {
             ApplicationUser applicationUser= applicationUserRepo.findByUsername(username);
 
             m.addAttribute("username", username);
-
-            m.addAttribute("username", username);
             m.addAttribute("firstName", applicationUser.getFirstName());
             m.addAttribute("lastName", applicationUser.getLastName());
-//            m.addAttribute("dateOfBirth", applicationUser.getDate());
+            m.addAttribute("date", applicationUser.getDate());
             m.addAttribute("bio", applicationUser.getBio());
-//            List<Post> posts = postRepo.findByUserid (applicationUser);
-//            m.addAttribute("myposts", posts);
+            List<Post> posts = postRepo.findByUserid (applicationUser);
+            m.addAttribute("posts", posts);
             m.addAttribute("picture","https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png");
 
         }
@@ -73,15 +72,15 @@ public class PostController {
         if (p != null)  // not strictly required if your WebSecurityConfig is correct
         {
             String username = p.getName();
-            ApplicationUser applicationUser = applicationUserRepo.findByUsername(username);
+            ApplicationUser applicationUser= applicationUserRepo.findByid(id);
 
             m.addAttribute("username", username);
             m.addAttribute("firstName", applicationUser.getFirstName());
             m.addAttribute("lastName", applicationUser.getLastName());
-//            m.addAttribute("dateOfBirth", applicationUser.getDate());
+           m.addAttribute("date", applicationUser.getDate());
             m.addAttribute("bio", applicationUser.getBio());
-//            List<Post> posts = postRepo.findByUserid (applicationUser);
-//            m.addAttribute("myposts", posts);
+            List<Post> posts = postRepo.findByUserid (applicationUser);
+            m.addAttribute("posts", posts);
             m.addAttribute("picture","https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png");
 
         }
@@ -99,7 +98,7 @@ public class PostController {
         m.addAttribute("myposts", posts);
         m.addAttribute("defaultProfilePicture", "https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png");
 
-        return "/user-info.html";
+        return "idForUsers.html";
     }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND)

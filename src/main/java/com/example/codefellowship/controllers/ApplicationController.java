@@ -3,6 +3,7 @@ package com.example.codefellowship.controllers;
 import com.example.codefellowship.Repositorys.ApplicationUserRepo;
 import com.example.codefellowship.model.ApplicationUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,6 +19,7 @@ import javax.xml.crypto.Data;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class ApplicationController {
@@ -35,7 +37,7 @@ public class ApplicationController {
 //    private UserDetailsService userDetailsService;
 
     @PostMapping("/signup")
-    public RedirectView createUser(String username, String password , String firstName , String lastName  , Date date , String bio ){
+    public RedirectView createUser(String username, String password , String firstName , String lastName  , @DateTimeFormat(pattern = "yyyy-MM-dd")  LocalDate date , String bio ){
         ApplicationUser applicationUser = new ApplicationUser();
         applicationUser.setUsername(username);
         applicationUser.setLocalDate(LocalDate.now());
@@ -49,7 +51,7 @@ public class ApplicationController {
 
         RepoForApp.save(applicationUser);
         authWithHttpServletRequest(username, password  );
-        return new RedirectView("/myprofile");
+        return new RedirectView("/");
 
     }
     public void authWithHttpServletRequest(String username, String password){
@@ -91,9 +93,10 @@ public class ApplicationController {
             m.addAttribute("username", username);
             m.addAttribute("firstName", applicationUser.getFirstName());
             m.addAttribute("lastName", applicationUser.getLastName());
-            m.addAttribute("dateOfBirth", applicationUser.getDate());
+            m.addAttribute("date", applicationUser.getDate());
             m.addAttribute("bio", applicationUser.getBio());
-
+            List <ApplicationUser> applicationUsers = RepoForApp.findAll() ;
+            m.addAttribute("all",applicationUsers);
         }
 
         return "index.html";

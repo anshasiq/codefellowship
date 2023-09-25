@@ -3,14 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>User By Id</title>
+    <link  th:href="@{/css/myp.css}"  type="text/css" rel="stylesheet" >
 </head>
 <body>
+<a  href="/"  class="logout" >Home page</a>
+
+<div class="userinfo">
 <h2 th:if="${username != null}">Profile info</h2>
 <img th:src="${picture}" alt="Default Profile Picture" width="200" height="200">
 <p th:if="${username != null}" th:text="${'Username: ' + username}"></p>
 <p th:if="${firstName != null}" th:text="${'First Name: ' + firstName}"></p>
 <p th:if="${lastName != null}" th:text="${'Last Name: ' + lastName}"></p>
-<h5 th:each = "posts : ${myposts}"  th:text="${posts.body}" th:text="${posts.createdAt}" > </h5>
+<p th:if="${date != null}" th:text="${'Date Of Birth: ' + date}"></p>
 <p th:if="${bio != null}" th:text="${'Bio: ' + bio}"></p>
+</div>
+
+<div th:each = "posts : ${posts}" class="posts" >
+    <h5 th:text="${posts.body}" > </h5>
+    <h5 th:text="${posts.createdAt}" > </h5>
+</div>
+
 </body>
 </html>
