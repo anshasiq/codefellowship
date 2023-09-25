@@ -18,7 +18,7 @@ public class ApplicationUser implements UserDetails {
    private String password;
     private String firstName;
     private String lastName;
-    private Date date;
+    private LocalDate date;
     private String bio;
     private LocalDate localDate;
 
@@ -33,7 +33,7 @@ public class ApplicationUser implements UserDetails {
     public ApplicationUser() {
     }
 
-    public ApplicationUser(String username, String password, String firstName, String lastName, Date date, String bio, LocalDate localDate) {
+    public ApplicationUser(String username, String password, String firstName, String lastName, LocalDate date, String bio, LocalDate localDate) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -46,22 +46,22 @@ public class ApplicationUser implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     @Override
@@ -92,11 +92,11 @@ public class ApplicationUser implements UserDetails {
         return firstName;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

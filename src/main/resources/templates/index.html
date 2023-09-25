@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h3 th:if="${username != null}" th:text="${'Current user: ' + username + ' and created at ' + createdDate}"></h3>
+<h3 th:if="${username != null}" th:text="${'Current user: ' + username + ' and created at ' + date}"></h3>
 <h1>Welcome to the home page</h1>
 
 
@@ -18,6 +18,11 @@
     <li><a th:if="${username}" href="/myprofile">myprofile</a></li>
 <li> <a th:if="!${username}" href="/signup">Or Sign Up</a> </li>
 <li> <a th:if="${username}" href="/logout">Log Out</a> </li>
+    <div th:if="${username}"  > All users
+        <div th:each = "all : ${all}" class="posts" >
+        <a th:text="${all.username}"  th:href="@{'/users/'+${all.id}}"  > id user </a>
+        </div>
+    </div>
 </ul>
 </body>
 </html>
