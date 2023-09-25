@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -29,6 +30,17 @@ public class ApplicationUser implements UserDetails {
     public List<Post> getPosts() {
         return posts;
     }
+
+    @ManyToMany(mappedBy = "following")
+    Set<ApplicationUser> folowers ;
+
+    @ManyToMany
+    @JoinTable(
+            name = "followers",  // table name
+            joinColumns = {@JoinColumn(name="user_id")},
+            inverseJoinColumns = {@JoinColumn(name="following_id")}
+    )
+    Set<ApplicationUser> following;
 
     public ApplicationUser() {
     }
