@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>FEED</title>
+    <link  th:href="@{/css/feed.css}"  type="text/css" rel="stylesheet" >
+</head>
+<body>
+<h1>feed</h1>
+<div th:if="${username}" >
+  <div th:each = "posts : ${posts}" class="card"  >
+      <h5  th:text="${posts.getId}" class="userid"> </h5>
+      <div th:each = "posts : ${posts.getPosts}" class="posts"  >
+      <h5  th:text="${posts.getBody}" class="postbody" > </h5>
+    </div>
+  </div>
+</div>
+</body>
+</html>

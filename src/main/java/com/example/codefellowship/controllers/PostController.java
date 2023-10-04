@@ -73,7 +73,7 @@ public class PostController {
         {
             String username = p.getName();
             ApplicationUser applicationUser= applicationUserRepo.findByid(id);
-
+          m.addAttribute("id",id);
             m.addAttribute("username", username);
             m.addAttribute("firstName", applicationUser.getFirstName());
             m.addAttribute("lastName", applicationUser.getLastName());
