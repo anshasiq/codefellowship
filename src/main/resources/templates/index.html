@@ -16,6 +16,7 @@
 <ul class="menu">
 <li><a th:if="!${username}" href="/login">Log In</a></li>
     <li><a th:if="${username}" href="/myprofile">myprofile</a></li>
+    <li><a th:if="${username}" href="/feed">feed</a></li>
 <li> <a th:if="!${username}" href="/signup">Or Sign Up</a> </li>
 <li> <a th:if="${username}" href="/logout">Log Out</a> </li>
     <div th:if="${username}"  > All users
@@ -24,5 +25,16 @@
         </div>
     </div>
 </ul>
+<!--th:text="${posts.body}-->
+<!--<div th:if="${username}" >-->
+<!--<div th:each = "posts : ${posts}" class="posts"  >-->
+<!--        <div th:each = "posts : ${posts.getPosts}" class="posts"  >-->
+<!--    <h5  th:text="${posts.getBody}" > </h5>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+
+
 </body>
 </html>

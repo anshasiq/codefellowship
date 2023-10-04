@@ -8,6 +8,12 @@
 <body>
 <a  href="/"  class="logout" >Home page</a>
 
+<!--<a  href="/"  class="logout" >Follow Me</a>-->
+<!-- /follow/{userId}-->
+<form th:action="@{'/follow/' + ${id}}" method="post">
+    <input type="submit" value="follow me please">
+</form>
+
 <div class="userinfo">
 <h2 th:if="${username != null}">Profile info</h2>
 <img th:src="${picture}" alt="Default Profile Picture" width="200" height="200">
